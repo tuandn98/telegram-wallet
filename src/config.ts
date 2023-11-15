@@ -6,8 +6,6 @@ export const NODE_ENV = getEnvString("NODE_ENV");
 export const SERVER_CODE = getEnvString("SERVER_CODE");
 export const SERVER_NAME = getEnvString("SERVER_NAME");
 export const SENTRY_DNS = getEnvString("SENTRY_DNS");
-export const PRIVATE_KEY_BOT = getEnvString("PRIVATE_KEY_BOT");
-export const BATCH_SEND_TOKEN_CONTRACT_ADDRESS = getEnvString("BATCH_SEND_TOKEN_CONTRACT_ADDRESS");
 export const VIEM_PROVIDERS = getEnvString("VIEM_PROVIDERS");
 export const TELEGRAM_WALLET_BOT_TOKEN = getEnvString("TELEGRAM_WALLET_BOT_TOKEN");
 
@@ -17,5 +15,4 @@ export const IS_SERVER_MAINTAINED = getBooleanFromEnv("IS_SERVER_MAINTAINED");
 export const IS_USE_PLAYGROUND = getBooleanFromEnv("IS_USE_PLAYGROUND");
 export const ENABLE_TELEGRAM = getBooleanFromEnv("ENABLE_TELEGRAM");
 
-export const QUANTITY_ADDRESS_IN_PACK = getIntFromEnv("QUANTITY_ADDRESS_IN_PACK");
 
