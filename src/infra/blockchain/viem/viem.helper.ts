@@ -6,13 +6,9 @@ import {
 	encodeEventTopics,
 	isAddressEqual
 } from "viem";
-import { contractUSDCToken, viemPublicClient } from ".";
-import { system_status } from "../..";
-import { BASE_FEE_ACCEPT } from "../../../config";
+
+import { viemPublicClient } from ".";
 import { ERROR_CODE, ErrMsg } from "../../../lib/error_handler";
-import { getErrMsg } from "../../database/mongo/methods/helper";
-import { TCopyRequest } from "../../database/mongo/models/CopyProof";
-import { TPermit } from "../../database/mongo/models/Order";
 import { POOL_ABI } from "./contract/pool_contract/abi";
 import { POSITION_ABI } from "./contract/position_contract/abi";
 import {
@@ -147,14 +143,14 @@ const decodeParametersFeePaid = (data: Hex) => {
 	};
 };
 const findLogFeePaidById = (logs: Log[], id: string, transactionHash: string) => {
-	for(const log of logs) {
+	for (const log of logs) {
 		const decode_log = decodeParametersFeePaid(log.data)
 		if (decode_log.id === id && log.transactionHash === transactionHash) return decode_log
 	}
 	return undefined
 }
 const getOracleFee = async (transactionHash: Hex, id: string) => {
-	const receipt = await viemPublicClient.getTransactionReceipt({ hash: transactionHash})
+	const receipt = await viemPublicClient.getTransactionReceipt({ hash: transactionHash })
 	const fee_paid_logs = getFeePaidLogs(receipt.logs, transactionHash)
 	const fee_paid_value = findLogFeePaidById(fee_paid_logs, id, transactionHash)
 	return fee_paid_value?.oracle || 0n
