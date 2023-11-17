@@ -1,5 +1,4 @@
 import { Steps, market_bot, SendMessageByBotMarket } from "./telegram_wallet_bot";
-import { internal_payment_system } from '../../index';
 import { TCacheDataUser } from "./telegram.type";
 import { TTemplate, TTemplateLanguage, getTemplateMessage } from "./telegram_template";
 import { SendAnswerCbQueryByBot, SendMessageByBot } from "./telegram.helper";

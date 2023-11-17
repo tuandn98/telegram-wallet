@@ -4,7 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "rm -rf dist && tsc",
+    "start": "node --max-old-space-size=4096 dist/index.js",
+    "dev": "ts-node src/index.ts",
+    "dep": "docker-compose -f docker-compose.yml up --build -d",
+    "dep:log": "docker-compose -f docker-compose.yml up --build",
+    "test": "ts-node src/test/index.ts"
   },
   "author": "",
   "license": "ISC",
@@ -18,7 +23,8 @@
   },
   "dependencies": {
     "@sentry/node": "^7.44.2",
-    "dotenv": "^16.3.1",
+    "@walletconnect/core": "^2.10.4",
+    "@walletconnect/web3wallet": "^1.9.3",
     "telegraf": "^4.15.0",
     "viem": "^1.19.1"
   }

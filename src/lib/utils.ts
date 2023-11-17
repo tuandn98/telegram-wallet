@@ -65,7 +65,7 @@ export const getStartPreviousDays = (from: Date, days: number) => {
 	return new Date(from.getTime() - days * 86400000);
 };
 
-export function shuffle(array) {
+export function shuffle(array: any[]) {
 	let currentIndex = array.length;
 	let randomIndex: number;
 
@@ -209,7 +209,7 @@ export const convertDateDayOrMonth = (
 	return convertedDate;
 };
 export const convertAbiViem = (abi: any) => {
-	const newAbi = abi.map((el) => {
+	const newAbi = abi.map((el: any) => {
 		if (el?.outputs?.length > 1) {
 			el.outputs = [
 				{

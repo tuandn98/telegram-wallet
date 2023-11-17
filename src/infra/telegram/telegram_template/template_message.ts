@@ -1,5 +1,4 @@
 import { ForceReply, InlineKeyboardMarkup, ReplyKeyboardMarkup, ReplyKeyboardRemove } from "telegraf/typings/core/types/typegram";
-import { LEVEL_ALERT_THRESHOLDS, TRONSAVE_URL } from "../../../config";
 import { handMultipleInlineKeyBoard } from "../telegram.helper";
 import { TTemplateLanguage, getTemplateMessage } from ".";
 
@@ -62,13 +61,7 @@ export class AirdropTelegramBotScript {
         }
     }
     public notify_message = {
-        notify_warning: (options: TypeAlertMessage) => {
-            const { percentThreshold, valueResource, valueLimit, percentResource, typeValue, address } = options
-            const getLastLevelThreshold = Number(LEVEL_ALERT_THRESHOLDS.slice(-1).toString())
-            const iconNotification = percentThreshold === getLastLevelThreshold ? '❌' : '⚠️'
-            const resultMessage = `${iconNotification} ${typeValue.toUpperCase()} AT LEAST ${percentThreshold}% ${iconNotification}\n\nAddress: ${address}\n${typeValue}: ${valueResource}/${valueLimit}\n% Resource ${typeValue}: ${percentResource}%\n\n`
-            return resultMessage
-        }
+        
     }
     public entities_message = {
         setBoldMessage: (message: string) => '*' + message + '*',

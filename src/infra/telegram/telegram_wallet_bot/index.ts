@@ -13,29 +13,29 @@ const Steps = {
     set_uri: "set_uri",
 }
 
-const market_bot = new Telegraf(TELEGRAM_WALLET_BOT_TOKEN)
+const telegraf_bot = new Telegraf(TELEGRAM_WALLET_BOT_TOKEN)
 
 const bot_script = new AirdropTelegramBotScript()
-const initTelegramBotMarket = async () => {
+const initTelegramBot = async () => {
     try {
         if (ENABLE_TELEGRAM) {
             handleBotStart()
             handleBotAction()
             handleBotMessage()
             successConsoleLog(`🚀 Telegram bot Market: ready`)
-            await market_bot.launch()
+            await telegraf_bot.launch()
         } else {
             console.log(`Disable Telegram Bot ... To open please change env ENABLE_TELEGRAM to true`)
         }
     } catch (e) {
         console.log(`initTelegramBotMarket error!`)
-        ErrorHandler(e, {}, initTelegramBotMarket.name)
-        await market_bot.launch()
+        ErrorHandler(e, {}, initTelegramBot.name)
+        await telegraf_bot.launch()
     }
 }
 
 const SendMessageByBotMarket = (message: string, chatId: string | number, reply_markup?: TReplyMarkup) => {
-    return market_bot.telegram.sendMessage(chatId, message, {
+    return telegraf_bot.telegram.sendMessage(chatId, message, {
         parse_mode: 'Markdown',
         disable_web_page_preview: true,
         reply_markup
@@ -43,8 +43,8 @@ const SendMessageByBotMarket = (message: string, chatId: string | number, reply_
 }
 
 export {
-    Steps, market_bot,
+    Steps, telegraf_bot as market_bot,
     bot_script,
-    initTelegramBotMarket,
+    initTelegramBot,
     SendMessageByBotMarket
 }
